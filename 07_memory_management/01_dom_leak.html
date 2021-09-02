@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>JavaScript DOM Leak Demonstration</title>
+</head>
+<body>
+
+	<div id="one">Some text, one</div>
+	<div id="two">Div number two</div>
+
+	<script>
+		let one = document.getElementById('one');
+		let two = document.getElementById('two');
+		one.addEventListener('click', function() {
+			two.remove();
+			console.log(two); // should print the html after deletion
+		});
+	</script>
+</body>
+</html>
